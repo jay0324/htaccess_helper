@@ -131,6 +131,7 @@ $(function(){
 		//init
 		function fnInit(){
 			fnUpdate();
+			fnUpdateSortUI();
 		}
 
 		//get data from apps
@@ -151,17 +152,19 @@ $(function(){
 			var list = "";
 			for (var i = 0; i < currentList.length; i++) {
 	            list += '<div id="wrap_'+currentList[i]['path_id']+'" class="redir-wrap box">'+
+	            			'<div class="move_btn"><span class="icon-move"></span></div>'+
 	            			'<div class="row">'+
 	            				'<label for="">Old</label>'+
 	            				'<input class="old_path box" type="text" value="'+currentList[i]['old_path']+'">'+
 	            			'</div>'+
+	            			'<span class="icon-arrow-right"></span>'+
 	            			'<div class="row">'+
 	            				'<label for="">New</label>'+
 	            				'<input class="new_path box" type="text" value="'+currentList[i]['new_path']+'">'+
 	            			'</div>'+
 	            			'<div class="func">'+
-	            				'<button class="removeBtn box" value="'+currentList[i]['path_id']+'" toggle-data="wrap_'+currentList[i]['path_id']+'">Del</button>'+
-	            				'<button class="editBtn box" value="'+currentList[i]['path_id']+'">Edit</button>'+
+	            				'<button class="removeBtn box" value="'+currentList[i]['path_id']+'" toggle-data="wrap_'+currentList[i]['path_id']+'"><span class="icon-minus"></span></button>'+
+	            				'<button class="editBtn box" value="'+currentList[i]['path_id']+'"><span class="icon-pen"></span></button>'+
 	            			'</div>'+
 	            		'</div>';
 	        }
@@ -202,3 +205,35 @@ $(function(){
 
 	        $("#output").val(list);
 		}
+
+		//update jquery ui sortable
+        function fnUpdateSortUI(){
+            var current, update;
+            $( ".list-wrapper" ).sortable({
+                connectWith: ".item",
+                handle: ".move_btn",
+                placeholder: "portlet-placeholder ui-corner-all",
+                axis: "y",
+                start: function(e, ui) {
+                    current = ui.item.index();
+                },
+                stop: function(e, ui) {
+                    update = ui.item.index();
+                    fnUpdateSort(current,update);
+                }
+            });
+        }
+
+        //update sortable data
+        function fnUpdateSort(current,update){
+            var currentList = fnGetData('redirectList');
+            var currentItem = currentList[current];
+            var updateItem = currentList[update];
+
+            currentList.splice(update, 1, currentItem);
+            currentList.splice(current, 1, updateItem);
+
+            sessionStorage.setItem('redirectList', JSON.stringify(currentList));
+
+            fnUpdate();
+        }

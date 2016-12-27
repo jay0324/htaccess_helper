@@ -6,14 +6,21 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="plugin/jquery-md5/jquery-md5.min.js"></script>
+
+	<link rel="stylesheet" href="plugin/jqueryui/jquery-ui.min.css">
+	<script src="plugin/jqueryui/jquery-ui.min.js"></script>
+	<script src="plugin/jqueryui/jquery-ui.touch.min.js"></script>
+
+	<link rel="stylesheet" href="plugin/icon/style.css">
+
 	<script src="app.js"></script>
 </head>
 <body>
 
 <div id="toolbar">
 	<a id="logo" href="#">HTACCESS</a>
-	<a id="save_btn" href="#">SAVE</a>
-	<a id="open_btn" href="#">OPEN</a>
+	<a id="save_btn" href="#"><span class="icon-floppy-disk"></span> SAVE</a>
+	<a id="open_btn" href="#"><span class="icon-folder-open"></span> OPEN</a>
 	<a href="#404" class="func-btn">404 Generator</a>
 	<a href="#301" class="func-btn">301 Generator</a>
 </div>
@@ -42,10 +49,10 @@
 				<input id="new" type="text" class="addField box">
 			</div>
 			<div class="func">
-				<button id="add" class="box">Add</button>
+				<button id="add" class="box"><span class="icon-plus"></span></button>
 			</div>
 		</div>
-		<div id="list" class="box"></div>
+		<div id="list" class="box list-wrapper"></div>
 	</div>
 	
 	<!-- 404 -->
@@ -56,7 +63,7 @@
 				<input id="404path" type="text" class="addField box" >
 			</div>
 			<div class="func">
-				<button id="add404" class="box">Set</button>
+				<button id="add404" class="box"><span class="icon-floppy-disk"></span></button>
 			</div>
 		</div>
 	</div>

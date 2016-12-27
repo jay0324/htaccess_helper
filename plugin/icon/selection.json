@@ -1,0 +1,258 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M832 960l192-512h-832l-192 512zM128 384l-128 576v-832h288l128 128h416v128z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "folder-open",
+          "directory",
+          "category",
+          "browse"
+        ],
+        "grid": 16
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 1,
+        "name": "folder-open, directory, category, browse",
+        "prevSize": 32,
+        "code": 59653
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M896 0h-896v1024h1024v-896l-128-128zM512 128h128v256h-128v-256zM896 896h-768v-768h64v320h576v-320h74.978l53.022 53.018v714.982z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "floppy-disk",
+          "save"
+        ],
+        "grid": 16
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1,
+        "id": 0,
+        "name": "floppy-disk, save",
+        "prevSize": 32,
+        "code": 59654
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 1
+    },
+    {
+      "icon": {
+        "paths": [
+          "M1024 384h-384v-384h-256v384h-384v256h384v384h256v-384h384z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "plus",
+          "add"
+        ],
+        "grid": 16
+      },
+      "attrs": [],
+      "properties": {
+        "id": 33,
+        "order": 9,
+        "prevSize": 32,
+        "code": 59648,
+        "name": "plus"
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 32
+    },
+    {
+      "icon": {
+        "paths": [
+          "M0 384h1024v256h-1024z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "minus",
+          "remove",
+          "delete"
+        ],
+        "grid": 16
+      },
+      "attrs": [],
+      "properties": {
+        "id": 35,
+        "order": 8,
+        "prevSize": 32,
+        "code": 59649,
+        "name": "minus"
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 34
+    },
+    {
+      "icon": {
+        "paths": [
+          "M576 640v192h128l-192 192-192-192h128v-192zM448 384v-192h-128l192-192 192 192h-128v192zM384 576h-192v128l-192-192 192-192v128h192zM640 448h192v-128l192 192-192 192v-128h-192z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "move"
+        ],
+        "grid": 16
+      },
+      "attrs": [],
+      "properties": {
+        "id": 40,
+        "order": 4,
+        "prevSize": 32,
+        "code": 59650,
+        "name": "move"
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 39
+    },
+    {
+      "icon": {
+        "paths": [
+          "M0 640h512l-192 192 192 192 512-512-512-512-192 192 192 192h-512z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "arrow-right",
+          "right",
+          "next"
+        ],
+        "grid": 16
+      },
+      "attrs": [],
+      "properties": {
+        "id": 76,
+        "order": 10,
+        "prevSize": 32,
+        "code": 59651,
+        "name": "arrow-right"
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 75
+    },
+    {
+      "icon": {
+        "paths": [
+          "M948.992 75.008c-49.856-50.016-115.36-75.008-180.992-75.008-65.504 0-131.008 24.992-180.992 75.008l-586.016 585.984-0.992 363.008h361.984l587.008-587.008c100-100 100-261.984 0-361.984zM308.992 896h-52.992v-128h-127.264l0.128-53.76 548.64-548.736 180.992 180.992-549.504 549.504z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "pen",
+          "write",
+          "blog"
+        ],
+        "grid": 16
+      },
+      "attrs": [],
+      "properties": {
+        "id": 128,
+        "order": 7,
+        "prevSize": 32,
+        "code": 59652,
+        "name": "pen"
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 127
+    },
+    {
+      "icon": {
+        "paths": [
+          "M0 896h768v128h-768zM512 576v-576h-256v576h-128l256 320 256-320z"
+        ],
+        "width": 768,
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "download"
+        ],
+        "grid": 16
+      },
+      "attrs": [],
+      "properties": {
+        "id": 167,
+        "order": 13,
+        "prevSize": 32,
+        "code": 59655,
+        "name": "download"
+      },
+      "setIdx": 1,
+      "setId": 0,
+      "iconIdx": 166
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 100,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

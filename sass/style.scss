@@ -105,6 +105,11 @@ label {
     @include border-radius(5px 0 0 5px);
 }
 
+.move_btn{
+    display: inline-block;
+    cursor:move;
+}
+
 .row {
     display: inline-block;
 }
