@@ -9,11 +9,13 @@ $(function(){
 				var path_id = $.md5($("#old").val());
 	            var old_path = $("#old").val();
 	            var new_path = $("#new").val();
+	            var type = $("#type_301").val();
 	            var updateList = [];
 	            var addnew = {
 	            	"path_id": path_id,
 	                "old_path": old_path,
-	                "new_path": new_path
+	                "new_path": new_path,
+	                "type": type
 	            };
 	            for (var i = 0; i < currentList.length; i++) {
 	                if (currentList[i]['path_id'] != path_id) {
@@ -48,11 +50,13 @@ $(function(){
 	            var path_id = $(this).val();
 	            var old_path = $("#wrap_"+path_id+" .old_path").val();
 	            var new_path = $("#wrap_"+path_id+" .new_path").val();
+	            var type = $("#wrap_"+path_id+" .type_301").val();
 	            var updateList = [];
 	            var update = {
 	            	"path_id": path_id,
 	                "old_path": old_path,
-	                "new_path": new_path
+	                "new_path": new_path,
+	                "type": type
 	            };
 	            for (var i = 0; i < currentList.length; i++) {
 	                if (currentList[i]['path_id'] == path_id) {
@@ -162,6 +166,9 @@ $(function(){
 	            				'<label for="">New</label>'+
 	            				'<input class="new_path box" type="text" value="'+currentList[i]['new_path']+'">'+
 	            			'</div>'+
+	            			'<div class="row">'+
+	            				fnType301Option(currentList[i]['type'])+
+	            			'</div>'+
 	            			'<div class="func">'+
 	            				'<button class="removeBtn box" value="'+currentList[i]['path_id']+'" toggle-data="wrap_'+currentList[i]['path_id']+'"><span class="icon-minus"></span></button>'+
 	            				'<button class="editBtn box" value="'+currentList[i]['path_id']+'"><span class="icon-pen"></span></button>'+
@@ -171,12 +178,31 @@ $(function(){
 	        $("#list").html(list);
 		}
 
+		//301 type selection
+		function fnType301Option(option){
+			var options = [
+				'Redirect',
+				'RedirectMatch'
+			];
+
+			var options_output = '';
+
+			for (var i =0 ;i< options.length;i++){
+				var active = (option == i)? 'selected' : '';
+				options_output += '<option value="'+i+'" '+active+'>'+options[i]+'</option>';
+			}
+
+	        return '<select class="type_301 box select">'+options_output+'</select>';
+		}
+
 		//update 404 pannel
 		function fnUpdate404Pannel(){
 			var currentList = fnGetData('404List');
-			for (var i = 0; i < currentList.length; i++) {
-				$("#404path").val(currentList[i]['path_url']);
-	        }
+			if (currentList != null) {
+				for (var i = 0; i < currentList.length; i++) {
+					$("#404path").val(currentList[i]['path_url']);
+			    }
+			}
 		}
 
 		//update output
@@ -186,8 +212,10 @@ $(function(){
 
 			//404
 			currentList = fnGetData('404List');
-			if (currentList.length > 0) {
-				list += (currentList[0]['path_url'] != '') ? "ErrorDocument 404 "+currentList[0]['path_url']+"\n" : "";
+			if (currentList != null) {
+				if (currentList.length > 0) {
+					list += (currentList[0]['path_url'] != '') ? "ErrorDocument 404 "+currentList[0]['path_url']+"\n" : "";
+				}
 			}
 
 			//301
@@ -199,7 +227,14 @@ $(function(){
 						"RewriteCond %{REQUEST_URI} !^.*(.css|.js|.gif|.png|.jpg|.jpeg)$\n";
 
 				for (var i = 0; i < currentList.length; i++) {
-		            list += 'Redirect 301 '+currentList[i]['old_path']+' '+currentList[i]['new_path']+'\n';
+					switch(currentList[i]['type']){
+						case '1':
+							list += 'RedirectMatch 301 '+currentList[i]['old_path']+' '+currentList[i]['new_path']+'\n';
+						break;
+						default:
+							list += 'Redirect 301 '+currentList[i]['old_path']+' '+currentList[i]['new_path']+'\n';
+						break;
+					}
 		        }
 		    }
 
