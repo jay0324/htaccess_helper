@@ -10,12 +10,14 @@ $(function(){
 	            var old_path = $("#old").val();
 	            var new_path = $("#new").val();
 	            var type = $("#type_301").val();
+	            var pattern = $("#pattern").val();
 	            var updateList = [];
 	            var addnew = {
 	            	"path_id": path_id,
 	                "old_path": old_path,
 	                "new_path": new_path,
-	                "type": type
+	                "type": type,
+	                "pattern": pattern
 	            };
 	            for (var i = 0; i < currentList.length; i++) {
 	                if (currentList[i]['path_id'] != path_id) {
@@ -27,6 +29,21 @@ $(function(){
 	            $(".addField").val('');
 	            fnUpdate();
 			})
+
+			
+			$(document).on('change',".ruleSelect", function(){
+				var toggle_group_ID = '#'+$(this).attr('toggle-group');
+				var toggle_val = $(this).val();
+				switch (toggle_val){
+					case '2':
+						$('.patternRow',toggle_group_ID).show(200);
+					break;
+					default:
+						$('.patternRow',toggle_group_ID).hide(200);
+					break;
+				}
+			})
+			$(".ruleSelect").change();
 
 			//remove
 			$(document).on('click', ".removeBtn",function(){
@@ -51,12 +68,14 @@ $(function(){
 	            var old_path = $("#wrap_"+path_id+" .old_path").val();
 	            var new_path = $("#wrap_"+path_id+" .new_path").val();
 	            var type = $("#wrap_"+path_id+" .type_301").val();
+	            var pattern = $("#wrap_"+path_id+" .pattern").val();
 	            var updateList = [];
 	            var update = {
 	            	"path_id": path_id,
 	                "old_path": old_path,
 	                "new_path": new_path,
-	                "type": type
+	                "type": type,
+	                "pattern": pattern
 	            };
 	            for (var i = 0; i < currentList.length; i++) {
 	                if (currentList[i]['path_id'] == path_id) {
@@ -166,8 +185,12 @@ $(function(){
 	            				'<label for="">New</label>'+
 	            				'<input class="new_path box" type="text" value="'+currentList[i]['new_path']+'">'+
 	            			'</div>'+
+	            			'<div class="row patternRow">'+
+								'<label for="">Pattern</label>'+
+								'<input type="text" class="addField box pattern" value="'+currentList[i]['pattern']+'">'+
+							'</div>'+
 	            			'<div class="row">'+
-	            				fnType301Option(currentList[i]['type'])+
+	            				fnType301Option(currentList[i]['type'],'wrap_'+currentList[i]['path_id'])+
 	            			'</div>'+
 	            			'<div class="func">'+
 	            				'<button class="removeBtn box" value="'+currentList[i]['path_id']+'" toggle-data="wrap_'+currentList[i]['path_id']+'"><span class="icon-minus"></span></button>'+
@@ -179,10 +202,11 @@ $(function(){
 		}
 
 		//301 type selection
-		function fnType301Option(option){
+		function fnType301Option(option,id){
 			var options = [
 				'Redirect',
-				'RedirectMatch'
+				'RedirectMatch',
+				'Rewrite Multi-url with 1 pattern'
 			];
 
 			var options_output = '';
@@ -192,7 +216,7 @@ $(function(){
 				options_output += '<option value="'+i+'" '+active+'>'+options[i]+'</option>';
 			}
 
-	        return '<select class="type_301 box select">'+options_output+'</select>';
+	        return '<select class="type_301 box select ruleSelect" toggle-group="'+id+'">'+options_output+'</select>';
 		}
 
 		//update 404 pannel
@@ -222,14 +246,18 @@ $(function(){
 			currentList = fnGetData('redirectList');
 			if (currentList.length > 0) {
 				list += "rewriteengine on\n";
-				list += "RewriteCond %{REQUEST_FILENAME} !-f\n"+
-						"RewriteCond %{REQUEST_FILENAME} !-d\n"+
-						"RewriteCond %{REQUEST_URI} !^.*(.css|.js|.gif|.png|.jpg|.jpeg)$\n";
+				//list += "RewriteCond %{REQUEST_FILENAME} !-f\n"+
+				//		"RewriteCond %{REQUEST_FILENAME} !-d\n"+
+				//		"RewriteCond %{REQUEST_URI} !^.*(.css|.js|.gif|.png|.jpg|.jpeg)$\n";
 
 				for (var i = 0; i < currentList.length; i++) {
 					switch(currentList[i]['type']){
 						case '1':
 							list += 'RedirectMatch 301 '+currentList[i]['old_path']+' '+currentList[i]['new_path']+'\n';
+						break;
+						case '2':
+							list += 'RewriteCond %{REQUEST_URI} ^.*('+currentList[i]['old_path']+')$\n'+
+									'RewriteRule ^.*'+currentList[i]['pattern']+'.* '+currentList[i]['new_path']+' [R=301,NC,L]\n';
 						break;
 						default:
 							list += 'Redirect 301 '+currentList[i]['old_path']+' '+currentList[i]['new_path']+'\n';

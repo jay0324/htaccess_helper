@@ -39,7 +39,7 @@
 
 	<!-- 301 -->
 	<div id="301_form" class="func-form">
-		<div class="add box">
+		<div id="group1" class="add box">
 			<div class="row">
 				<label for="">Old</label>
 				<input id="old" type="text" class="addField box" >
@@ -49,10 +49,15 @@
 				<label for="">New</label>
 				<input id="new" type="text" class="addField box">
 			</div>
+			<div class="row patternRow">
+				<label for="">Pattern</label>
+				<input id="pattern" type="text" class="addField box">
+			</div>
 			<div class="row">
-				<select id="type_301" class="box select">
+				<select id="type_301" class="box select ruleSelect" toggle-group='group1'>
 					<option value="0">Redirect</option>
 					<option value="1">RedirectMatch</option>
+					<option value="2">Rewrite Multi-url with 1 pattern</option>
 				</select>
 			</div>
 			<div class="func">
