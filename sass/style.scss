@@ -40,7 +40,7 @@ form{
 	}
 }
 #left {
-    width: 50%;
+    width: 70%;
     height: calc(100% - 28px);
     padding: 10px;
     float: left;
@@ -48,7 +48,7 @@ form{
 }
 
 #right {
-    width: 50%;
+    width: 30%;
     height: calc(100% - 30px);
     padding: 10px;
     float: right;
@@ -73,7 +73,8 @@ form{
 
 .add {
     padding: 5px;
-    height: 50%;
+    height: 50px;
+    overflow:auto;
 }
 
 .select{
@@ -83,25 +84,27 @@ form{
 #list {
     border: 1px solid #ccc;
     padding: 5px;
-    height: 50%;
-    @include box-shadow(0, 0, 20px, #ccc, 'inset');
+    height: calc(100% - 50px);
     overflow: auto;
 }
 
 .redir-wrap {
     padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+    background:#fff;
 }
 
 input {
     padding: 5px;
     margin: 5px;
     margin-left: 0;
+    width:100%
 }
 
 label {
+    display:none;
     padding: 5px;
     margin: 5px;
-    display: inline-block;
     margin-right: 0;
     color: #fff;
     background: #000;

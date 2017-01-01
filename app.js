@@ -178,16 +178,16 @@ $(function(){
 	            			'<div class="move_btn"><span class="icon-move"></span></div>'+
 	            			'<div class="row">'+
 	            				'<label for="">Old</label>'+
-	            				'<input class="old_path box" type="text" value="'+currentList[i]['old_path']+'">'+
+	            				'<input class="old_path box" type="text" value="'+currentList[i]['old_path']+'" placeholder="Old path">'+
 	            			'</div>'+
 	            			'<span class="icon-arrow-right"></span>'+
 	            			'<div class="row">'+
 	            				'<label for="">New</label>'+
-	            				'<input class="new_path box" type="text" value="'+currentList[i]['new_path']+'">'+
+	            				'<input class="new_path box" type="text" value="'+currentList[i]['new_path']+'" placeholder="New path">'+
 	            			'</div>'+
 	            			'<div class="row patternRow">'+
 								'<label for="">Pattern</label>'+
-								'<input type="text" class="addField box pattern" value="'+currentList[i]['pattern']+'">'+
+								'<input type="text" class="addField box pattern" value="'+currentList[i]['pattern']+'" placeholder="Pattern">'+
 							'</div>'+
 	            			'<div class="row">'+
 	            				fnType301Option(currentList[i]['type'],'wrap_'+currentList[i]['path_id'])+
